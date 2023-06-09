@@ -30,6 +30,9 @@ export default function NavEmployee() {
                     <li>
                         <Link className="nav_button" to="/gym_layout">Gym Layout</Link>
                     </li>
+                    <li>
+                        <Link className="nav_button" to="/routes">Routes</Link>
+                    </li>
                 </ul>
             </div>
          </nav>

@@ -108,6 +108,8 @@ class Route(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     rating = db.Column(db.Integer)
+    xPosition = db.Column(db.Integer)
+    yPostition = db.Column(db.Integer)
     video_url = db.Column(db.String)
     setter_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     gym_id = db.Column(db.Integer, db.ForeignKey("gyms.id"))

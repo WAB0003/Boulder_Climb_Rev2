@@ -13,6 +13,8 @@ const EmployeeApp = () => {
           <Routes>
             <Route path="/" element={<EmployeeHome />}/>
             <Route path="/gym_layout" element={<EmployeeGymLayout />} />
+            <Route path="/routes" element={<EmployeeHome />}/>
+            
           </Routes>
         </div>
       )
