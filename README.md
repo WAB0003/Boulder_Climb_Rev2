@@ -43,4 +43,4 @@ Next, open a new terminal and *cd* into the `client` directory. Type the followi
 npm start
 ```
 
-Immediately following the command listed previously, the web application should start up and you should be able to use *Boulder Climb* as described above.
+Immediately following the command listed previously, the web application should start up and you should be able to use *Boulder Climb* as described above.# Boulder_Climb_Rev2
