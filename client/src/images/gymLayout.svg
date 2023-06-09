@@ -1,0 +1,62 @@
+<svg 
+version="1.1" 
+viewBox="0.0 0.0 960.0 720.0" 
+fill="none" 
+stroke="none" 
+stroke-linecap="square" 
+stroke-miterlimit="10" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns="http://www.w3.org/2000/svg"
+>
+<clipPath id="p.0">
+<path d="m0 0l960.0 0l0 720.0l-960.0 0l0 -720.0z" clip-rule="nonzero"/>
+</clipPath><g clip-path="url(#p.0)">
+<path fill="#000000" fill-opacity="0.0" d="m0 0l960.0 0l0 720.0l-960.0 0z" fill-rule="evenodd"/>
+<path fill="#ff9900" 
+d="m232.3283 258.59143l66.580795 190.96219l59.65811 -20.051514l101.2959 -179.84929l-164.42819 -20.552795z" 
+fill-rule="evenodd"
+/>
+<path stroke="#000000" 
+stroke-width="1.0" 
+stroke-linejoin="round" 
+stroke-linecap="butt" 
+d="m232.3283 258.59143l66.580795 190.96219l59.65811 -20.051514l101.2959 -179.84929l-164.42819 -20.552795z" 
+fill-rule="evenodd"
+/>
+<path fill="#93c47d" 
+d="m653.0 140.23885l-120.0 211.99998l19.0 184.0l18.0 29.0l103.0 -74.0z" 
+fill-rule="evenodd"
+/>
+<path stroke="#000000" 
+stroke-width="1.0" 
+stroke-linejoin="round" 
+stroke-linecap="butt" 
+d="m653.0 140.23885l-120.0 211.99998l19.0 184.0l18.0 29.0l103.0 -74.0z" 
+fill-rule="evenodd"
+/>
+<path 
+fill="#4a86e8" 
+d="m533.0 0l-534.0 0l0 344.0l23.498688 23.501312l12.501312 -7.5013123l13.0 -21.0l5.0 -48.0l-4.0 -68.0l30.0 -85.0l81.0 -44.0l82.0 -50.0l273.0 -15.0z" 
+fill-rule="evenodd"
+/>
+<path 
+stroke="#000000" 
+stroke-width="1.0" 
+stroke-linejoin="round" 
+stroke-linecap="butt" 
+d="m533.0 0l-534.0 0l0 344.0l23.498688 23.501312l12.501312 -7.5013123l13.0 -21.0l5.0 -48.0l-4.0 -68.0l30.0 -85.0l81.0 -44.0l82.0 -50.0l273.0 -15.0z" 
+fill-rule="evenodd"
+/>
+<path 
+fill="#4a86e8" 
+d="m1.0 520.0l150.0 20.0l59.0 110.0l263.0 30.0l250.0 -3.0l55.0 -90.0l82.0 -80.0l7.0 -141.0l89.0 -226.0l-133.0 -66.0l-83.0 -63.0l0 -12.0l222.0 0l-2.0 23.0l0 698.0l-963.0 0z" 
+fill-rule="evenodd"
+/>
+<path 
+stroke="#000000" 
+stroke-width="1.0" 
+stroke-linejoin="round" 
+stroke-linecap="butt" 
+d="m1.0 520.0l150.0 20.0l59.0 110.0l263.0 30.0l250.0 -3.0l55.0 -90.0l82.0 -80.0l7.0 -141.0l89.0 -226.0l-133.0 -66.0l-83.0 -63.0l0 -12.0l222.0 0l-2.0 23.0l0 698.0l-963.0 0z" 
+fill-rule="evenodd"/></g>
+</svg>

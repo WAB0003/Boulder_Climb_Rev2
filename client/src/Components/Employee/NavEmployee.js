@@ -27,6 +27,9 @@ export default function NavEmployee() {
                         <h3>Hello,  {user.first_name} </h3>
                         <Link className="nav_button_secondary" onClick={handleLogout}>Logout</Link>
                     </li>
+                    <li>
+                        <Link className="nav_button" to="/gym_layout">Gym Layout</Link>
+                    </li>
                 </ul>
             </div>
          </nav>

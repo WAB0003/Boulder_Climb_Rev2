@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import NavEmployee from "./NavEmployee";
 import EmployeeHome from "./EmployeeHome";
+import EmployeeGymLayout from "./GymLayoutPage/EmployeeGymLayout";
 
 
 
@@ -11,6 +12,7 @@ const EmployeeApp = () => {
           <NavEmployee />
           <Routes>
             <Route path="/" element={<EmployeeHome />}/>
+            <Route path="/gym_layout" element={<EmployeeGymLayout />} />
           </Routes>
         </div>
       )
