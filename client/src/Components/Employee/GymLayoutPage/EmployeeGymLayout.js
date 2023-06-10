@@ -2,6 +2,7 @@ import layoutImg from '../../../images/gymLayout.svg'
 import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
 import RouteDots from './RouteDots';
+import RouteAddForm from './RouteAddForm';
 
 
 function EmployeeGymLayout() {
@@ -11,6 +12,8 @@ function EmployeeGymLayout() {
   const imageWidth = windowWidth * .5
   const dotDiameter = (imageWidth*.015)      //The size of each dot is relative to the image width.
   const navbarHeight = 80 //The height of Navbar per from App.css
+
+  const [addRouteModalToggle, setAddRouteModalToggle ] = useState(false)
 
   console.log(allDots)
 
@@ -29,8 +32,7 @@ function EmployeeGymLayout() {
   
   
   //! Add Dot Click 
-  const addDotClick = (e) => {
-    
+  const addRouteDot = (e) => {
     //When image is clicked, a dot will appear. Compute the height/width as a percentage relative to the image location
     const imageHeight = document.querySelector('#main_image').clientHeight
     const x = ((e.pageX - ((windowWidth-imageWidth)/2))-(dotDiameter/2))/imageWidth*100;
@@ -40,9 +42,12 @@ function EmployeeGymLayout() {
       xPosition:(x),
       yPosition:(y)
     }
+    setAddRouteModalToggle(!addRouteModalToggle)
     setAllDots((prevDots)=>[...prevDots, newDotObj])
   }
 
+
+  //!Display All Routes as Dots on the page
   const displayDots = allDots.map((eachDot)=>{
     return <RouteDots key={allDots.indexOf(eachDot)} id={allDots.indexOf(eachDot)} xPosition={eachDot.xPosition} yPosition={eachDot.yPosition} dotDiameter={dotDiameter}/>
   })
@@ -50,8 +55,13 @@ function EmployeeGymLayout() {
   return (
     // <div className="App">
         <div className='main_image_wrapper' style={{width:imageWidth}}  >
-          <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addDotClick} />
+          <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addRouteDot} />
           {displayDots}
+          <div id="myModal" className={addRouteModalToggle?"route_info_modal_on":"route_info_modal_off"}>
+            <div className="modal-content" >
+                <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} />
+            </div>
+          </div>
         </div>
     // </div>
   );

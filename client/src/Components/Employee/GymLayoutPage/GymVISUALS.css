@@ -10,7 +10,7 @@
     cursor: pointer ;
   }
   
-  .modal_off {
+  .route_info_modal_off {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -24,7 +24,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
-  .modal_on {
+  .route_info_modal_on {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
