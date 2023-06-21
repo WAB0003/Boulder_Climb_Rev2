@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Icon } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { currentUser } from '../../../Recoil/userRecoil'
@@ -9,7 +9,7 @@ import { currentRoutes } from '../../../Recoil/routesRecoil'
 //!Notes
 //! Pass down All Gyms as State
 
-const RouteAddForm = ({ setAddRouteModalToggle }) =>{
+const RouteAddForm = ({ setAddRouteModalToggle, addRouteModalToggle }) =>{
     //Pull in required state from Recoil
     const user = useRecoilValue(currentUser)
     const allGyms = useRecoilValue(currentGyms)
@@ -59,12 +59,19 @@ const RouteAddForm = ({ setAddRouteModalToggle }) =>{
           setAddRouteModalToggle(false)
     }
 
+    const closeModal = () => {
+        console.log("clicked")
+        setAddRouteModalToggle(!addRouteModalToggle)
+      }
+
     const displayGyms = allGyms.map((gym)=>{
         return <option key={gym.id} value={gym.id} name="gym_id" >{gym.name}</option>
         })
 
     return(
         <Form>
+            <Icon className='close_Icon' name="close" onClick={closeModal}/>
+            
             <Form.Field>
                 <label>Route Name</label>
                 <input placeholder='Enter Name of Route Here' name="name" value={name} onChange={handleChange}/>

@@ -1,8 +1,8 @@
-"""Create Tables
+"""initial migration
 
-Revision ID: 0f4c75508a68
+Revision ID: cc20ee94132f
 Revises: 
-Create Date: 2023-05-23 10:47:51.297641
+Create Date: 2023-06-21 12:06:52.406833
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0f4c75508a68'
+revision = 'cc20ee94132f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,6 +48,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('rating', sa.Integer(), nullable=True),
+    sa.Column('xPosition', sa.Integer(), nullable=True),
+    sa.Column('yPostition', sa.Integer(), nullable=True),
     sa.Column('video_url', sa.String(), nullable=True),
     sa.Column('setter_id', sa.Integer(), nullable=True),
     sa.Column('gym_id', sa.Integer(), nullable=True),

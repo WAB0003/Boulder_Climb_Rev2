@@ -81,9 +81,7 @@
   display: flex;
 }
 
-.loginContainer{
-  padding-top:0;
-}
+
 .loginForm {
   margin:0 auto;
   background-color:  #bcdcb6;
@@ -254,5 +252,10 @@
   align-items: center;
   display: flex;
 
+}
+
+.close_Icon{
+  float: right;
+  
 }
 

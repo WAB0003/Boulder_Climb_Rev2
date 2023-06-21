@@ -3,6 +3,7 @@ import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
 import RouteDots from './RouteDots';
 import RouteAddForm from './RouteAddForm';
+import { Icon } from 'semantic-ui-react';
 
 
 function EmployeeGymLayout() {
@@ -15,7 +16,7 @@ function EmployeeGymLayout() {
 
   const [addRouteModalToggle, setAddRouteModalToggle ] = useState(false)
 
-  console.log(allDots)
+  // console.log(allDots)
 
 
   //Centering the image caused positional errors for placing the dots
@@ -47,23 +48,43 @@ function EmployeeGymLayout() {
   }
 
 
+  const [selectedDot, setSelectedDot] = useState([])
+  console.log(selectedDot)
+    
+  const handleDotClick = (id) => {
+      setSelectedDot([id])
+  }
+
+  const exitSideBar = () => {
+    setSelectedDot([])
+  }
+
+  
+
+
   //!Display All Routes as Dots on the page
   const displayDots = allDots.map((eachDot)=>{
-    return <RouteDots key={allDots.indexOf(eachDot)} id={allDots.indexOf(eachDot)} xPosition={eachDot.xPosition} yPosition={eachDot.yPosition} dotDiameter={dotDiameter}/>
+    return <RouteDots key={allDots.indexOf(eachDot)} id={allDots.indexOf(eachDot)} xPosition={eachDot.xPosition} yPosition={eachDot.yPosition} dotDiameter={dotDiameter} handleDotClick={handleDotClick}/>
   })
   
   return (
-    // <div className="App">
+
         <div className='main_image_wrapper' style={{width:imageWidth}}  >
           <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addRouteDot} />
           {displayDots}
-          <div id="myModal" className={addRouteModalToggle?"route_info_modal_on":"route_info_modal_off"}>
+          {/* <div id="myModal" className={addRouteModalToggle?"route_info_modal_on":"route_info_modal_off"}>
             <div className="modal-content" >
-                <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} />
+                <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} addRouteModalToggle={addRouteModalToggle} />
             </div>
+          </div> */}
+          <div className="sideNavContainer" >
+              <div id="mySidenav" className="sidenav" style={selectedDot.length > 0 ? {width:"400px"} : {width:"0px"}}>
+              <div className="exitButton" onClick={exitSideBar}>&#x2716;</div>
+                <p>I am the Info sidebar for Dot Number {selectedDot[0]}</p>
+              </div>        
           </div>
         </div>
-    // </div>
+
   );
 }
 
