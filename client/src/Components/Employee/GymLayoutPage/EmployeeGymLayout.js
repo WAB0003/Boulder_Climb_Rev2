@@ -1,22 +1,25 @@
 import layoutImg from '../../../images/gymLayout.svg'  
 import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
+import { useRecoilState } from "recoil"
 import RouteDots from './RouteDots';
 import RouteAddForm from './RouteAddForm';
 import { Icon } from 'semantic-ui-react';
+import { currentRoutes } from '../../../Recoil/routesRecoil';
 
 
 function EmployeeGymLayout() {
 
   const [allDots, setAllDots] = useState([])
+  const [ allRoutes, setAllRoutes ] = useRecoilState(currentRoutes)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const imageWidth = windowWidth * .5
   const dotDiameter = (imageWidth*.015)      //The size of each dot is relative to the image width.
   const navbarHeight = 80 //The height of Navbar per from App.css
 
-  const [addRouteModalToggle, setAddRouteModalToggle ] = useState(false)
 
-  // console.log(allDots)
+  console.log(allDots)
+  console.log(allRoutes)
 
 
   //Centering the image caused positional errors for placing the dots
@@ -43,7 +46,6 @@ function EmployeeGymLayout() {
       xPosition:(x),
       yPosition:(y)
     }
-    setAddRouteModalToggle(!addRouteModalToggle)
     setAllDots((prevDots)=>[...prevDots, newDotObj])
   }
 
@@ -72,11 +74,7 @@ function EmployeeGymLayout() {
         <div className='main_image_wrapper' style={{width:imageWidth}}  >
           <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addRouteDot} />
           {displayDots}
-          {/* <div id="myModal" className={addRouteModalToggle?"route_info_modal_on":"route_info_modal_off"}>
-            <div className="modal-content" >
-                <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} addRouteModalToggle={addRouteModalToggle} />
-            </div>
-          </div> */}
+                {/* <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} addRouteModalToggle={addRouteModalToggle} /> */}
           <div className="sideNavContainer" >
               <div id="mySidenav" className="sidenav" style={selectedDot.length > 0 ? {width:"400px"} : {width:"0px"}}>
               <div className="exitButton" onClick={exitSideBar}>&#x2716;</div>

@@ -40,40 +40,40 @@ def make_routes():
     print("Deleted all routes...")
     
     route_list = []
-    route_names = ["Big Cheesey",
-                   "The Snail",
-                   "TableTop",
-                   "The Crab",
-                   "Coles Crack",
-                   "Strange Persuit",
-                   "Gandalf",
-                   "Crimp, Slap, Throw",
-                   "Spanky", 
-                   "Cowardly Lion",
-                   "Moon dog",
-                   "Bananas", 
-                   "Abstraction",
-                   "Problem Child", 
-                   "Dirty Dude", 
-                   "Blood Diamond", 
-                   "Pony Ride", 
-                   "Cougarmilk",
-                   "Kona's Bulge",
-                   "Plastic Slapper", 
-                   "Shoulder Bone",
-                   "No Goin Back",
-                   "The Doozy", 
-                   "Cliff Hanger",
-                   "Plot Twist",                    
-                   ]
     
-    for each_route in route_names:
-        route = Route(name=each_route, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-        route_list.append(route)
+    route1 = Route(name="Big Cheesey", xPosition=27.56066571224051, yPosition=49.95443702290076, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route1)
+    
+    route2 = Route(name="TableTop", xPosition=27.131173944166072, yPosition=32.5880248091603, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route2)
+    
+    route3 = Route(name="Spanky", xPosition=40.159090909090914, yPosition=32.206345419847324, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route3)
+    
+    route4 = Route(name="Gandalf", xPosition=40.30225483178239, yPosition=49.57275763358779, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route4)
+    
+    route5 = Route(name="The Doozy", xPosition=58.48407301360058, yPosition=38.88573473282443, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route5)
+    
+    route6 = Route(name="Plot Twist", xPosition=63.35164638511096, yPosition=73.23687977099237, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route6)
+    
+    route7 = Route(name="Dirty Dude", xPosition=68.79187544738727, yPosition=52.24451335877863, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route7)
+    
+    route8 = Route(name="Coles Crack", xPosition=90.69595561918396, yPosition=44.801765267175576, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route8)
+    
+    route9 = Route(name="Cougarmilk", xPosition=10.81048675733715, yPosition=15.794131679389311, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route9)
+    
+    route10 = Route(name="Cowardly Lion", xPosition=28.849141016463847, yPosition=56.252146946564885, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route_list.append(route10)
     
     db.session.add_all(route_list)
     db.session.commit()
-    print(f'{len(route_names)} routes created...')
+    print('routes created...')
     
     
 def make_likes():
