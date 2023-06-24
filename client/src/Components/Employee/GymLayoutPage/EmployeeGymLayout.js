@@ -1,25 +1,24 @@
 import layoutImg from '../../../images/gymLayout.svg'  
 import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import RouteDots from './RouteDots';
 import RouteAddForm from './RouteAddForm';
 import { Icon } from 'semantic-ui-react';
 import { currentRoutes } from '../../../Recoil/routesRecoil';
+import { currentUser } from '../../../Recoil/userRecoil';
+import UpdateRouteForm from '../UpdateRouteForm';
 
 
 function EmployeeGymLayout() {
 
-  const [allDots, setAllDots] = useState([])
   const [ allRoutes, setAllRoutes ] = useRecoilState(currentRoutes)
+  const user = useRecoilValue(currentUser)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
   const imageWidth = windowWidth * .5
-  const dotDiameter = (imageWidth*.015)      //The size of each dot is relative to the image width.
+  const dotDiameter = (imageWidth*.02)      //The size of each dot is relative to the image width.
   const navbarHeight = 80 //The height of Navbar per from App.css
-
-
-  console.log(allDots)
-  console.log(allRoutes)
 
 
   //Centering the image caused positional errors for placing the dots
@@ -43,42 +42,59 @@ function EmployeeGymLayout() {
     const y = (e.pageY-(dotDiameter/2)-navbarHeight)/imageHeight*100;
 
     const newDotObj = {
+      name:"Untitled Route", 
+      video_url:"No Video",
+      setter_id:user.id,
+      rating: "No Rating",
+      gym_id:1,
+      active:false,
       xPosition:(x),
       yPosition:(y)
     }
-    setAllDots((prevDots)=>[...prevDots, newDotObj])
+
+    fetch("/routes", {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(newDotObj)
+    })
+    .then((r)=>r.json())
+    .then((newRoute)=>{
+      setAllRoutes((prevRouteList)=>[...prevRouteList,newRoute])
+    } )
   }
 
 
-  const [selectedDot, setSelectedDot] = useState([])
-  console.log(selectedDot)
+  const [selectedDot, setSelectedDot] = useState(false)
     
-  const handleDotClick = (id) => {
-      setSelectedDot([id])
+  const handleDotClick = (route) => {
+      setSelectedDot(route)
   }
 
   const exitSideBar = () => {
-    setSelectedDot([])
+    setSelectedDot(false)
   }
 
   
 
 
   //!Display All Routes as Dots on the page
-  const displayDots = allDots.map((eachDot)=>{
-    return <RouteDots key={allDots.indexOf(eachDot)} id={allDots.indexOf(eachDot)} xPosition={eachDot.xPosition} yPosition={eachDot.yPosition} dotDiameter={dotDiameter} handleDotClick={handleDotClick}/>
+  const displayRouteDots = allRoutes.map((eachRoute)=>{
+    return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} handleDotClick={handleDotClick}/>
   })
   
   return (
 
         <div className='main_image_wrapper' style={{width:imageWidth}}  >
           <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addRouteDot} />
-          {displayDots}
+          {displayRouteDots}
                 {/* <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} addRouteModalToggle={addRouteModalToggle} /> */}
           <div className="sideNavContainer" >
-              <div id="mySidenav" className="sidenav" style={selectedDot.length > 0 ? {width:"400px"} : {width:"0px"}}>
-              <div className="exitButton" onClick={exitSideBar}>&#x2716;</div>
-                <p>I am the Info sidebar for Dot Number {selectedDot[0]}</p>
+              <div id="mySidenav" className="sidenav" style={selectedDot ? {width:"400px"} : {width:"0px"}}>
+                {/* <p>I am the Info sidebar for Dot Number {selectedDot.id}</p> */}
+                <div className="exitButton" onClick={exitSideBar}>&#x2716;</div>
+                {selectedDot?<UpdateRouteForm key={selectedDot.id} route={selectedDot} />:<></>}
               </div>        
           </div>
         </div>

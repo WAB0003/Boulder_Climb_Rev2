@@ -56,30 +56,30 @@
     background-color: white;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 20px;
+    padding-top: 8px;
     border-radius: 10px;
     border: rgb(9, 9, 9);
     border-width: 1px;
     border-style:solid;
   }
   
-  .sidenav p {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
+  .sidenav h1 {
+    text-align: center;
     font-size: 25px;
-    color: #818181;
     display: block;
-
   }
   
-  .sidenav p:hover {
-    color: #f1f1f1;
-  }
 
   .exitButton {
     float: right;
+    position: relative;
     padding-right: 20px;
     font-size: large;
+    z-index: 1;
+  }
+
+  .exitButton:hover{
+    font-size: x-large;
   }
   
   

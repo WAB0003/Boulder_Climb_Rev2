@@ -9,7 +9,7 @@ import { currentRoutes } from '../../Recoil/routesRecoil'
 //!Notes
 //! Pass down All Gyms as State
 
-const UpdateRouteForm = ({ route, setOpen }) =>{
+const UpdateRouteForm = ({ route }) =>{
     //Pull in required state from Recoil
     const user = useRecoilValue(currentUser)
     const allGyms = useRecoilValue(currentGyms)
@@ -72,46 +72,52 @@ const UpdateRouteForm = ({ route, setOpen }) =>{
             })
             setAllRoutes(()=>updatedRouteList)
         })
-          setOpen(false)
     }
 
+    //! Handle Delete
+    const handleDeleteClick=()=>{
+        fetch(`/routes/${route.id}`,{
+        method: "DELETE",
+        })
+        // .then(r=>r.json())
+        .then(()=>handleDeleteRoute(route))
+    }
 
-    // const gymOptions = allGyms.map((gym)=>{
-    //     const gymObj = {
-    //         value: gym.id,
-    //         label: gym.name
-    //     }
-    //     return gymObj 
-    // })
+    const handleDeleteRoute = (deletedRoute) =>{
+        const updatedRouteList = allRoutes.filter((route)=>route.id !== deletedRoute.id)
+        setAllRoutes(updatedRouteList)
+    }
 
-    // console.log(gymOptions)
 
     const displayGyms = allGyms.map((gym)=>{
         return <option key={gym.id} value={gym.id} name="gym_id" >{gym.name}</option>        
         })
 
     return(
-        <Form>
-            <Form.Field>
-                <label>Route Name</label>
-                <input placeholder={route.name} name="name" value={name} onChange={handleChange}/>
-            </Form.Field>
-            <Form.Field>
-                <label>Rating</label>
-                <input placeholder={route.rating} name="rating" value={rating} onChange={handleChange}/>
-            </Form.Field>
-            <Form.Field>
-            {/* <Form.Field label='Select Gym' control='select' name="gym_id"  onChange={handleChange}> */}
-                <select name="gym_id"  onChange={handleChange} defaultValue={route.gym.id} >
-                    {displayGyms}
-                </select>
-            </Form.Field>
-            <Form.Field>
-                <label>Active</label>
-                <Form.Radio toggle  checked={isActive} onChange={handleRadioChange}/>
-            </Form.Field>
-            <Button type='submit' onClick={handleSubmit}>Submit</Button>
-        </Form>
+            <div className='updateRouteForm'>
+                <h1>Update Route Info</h1>
+                <Form  >
+                    <Form.Field>
+                        <label>Route Name</label>
+                        <input placeholder={route.name} name="name" value={name} onChange={handleChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Rating</label>
+                        <input placeholder={route.rating} name="rating" value={rating} onChange={handleChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <select name="gym_id"  onChange={handleChange} defaultValue={route.gym.id} >
+                            {displayGyms}
+                        </select>
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Active</label>
+                        <Form.Radio toggle  checked={isActive} onChange={handleRadioChange}/>
+                    </Form.Field>
+                    <Button type='submit' onClick={handleSubmit}>Confirm Update</Button>
+                    <Button onClick={handleDeleteClick} >Delete Route</Button>
+                </Form>
+            </div>
     )
 }
 

@@ -163,16 +163,18 @@ def routes():
     if request.method == "GET":
         return [route.to_dict() for route in Route.query.all()]
     elif request.method == "POST":
-        formData = request.get_json()
+        frontEndData = request.get_json()
         # import ipdb;ipdb.set_trace()
         try:
             new_route = Route(
-                name=formData.get("name"),
-                rating=formData.get("rating"),
-                video_url=formData.get("video_url"),
-                setter_id=formData.get("setter_id"),
-                gym_id=formData.get("gym_id"),
-                active=formData.get("active")
+                name=frontEndData.get("name"),
+                rating=frontEndData.get("rating"),
+                video_url=frontEndData.get("video_url"),
+                setter_id=frontEndData.get("setter_id"),
+                gym_id=frontEndData.get("gym_id"),
+                active=frontEndData.get("active"),
+                xPosition = frontEndData.get("xPosition"),
+                yPosition = frontEndData.get("yPosition")
             )
             db.session.add(new_route)
             db.session.commit()
