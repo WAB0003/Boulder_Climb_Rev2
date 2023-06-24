@@ -11,13 +11,13 @@ import VideoOptions from './VideoOptions'
 //!Notes
 //! Pass down All Gyms as State
 
-const UpdateRouteForm = ({ route }) =>{
+const UpdateRouteForm = ({ route, setSelectedDot }) =>{
     //Pull in required state from Recoil
     const user = useRecoilValue(currentUser)
     const allGyms = useRecoilValue(currentGyms)
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
     const [isActive, setIsActive] = useState(route.active)
-
+    
     // Create state to handle form:
     const [formData, setFormData] = useState({
         name: route.name,
@@ -117,7 +117,7 @@ const UpdateRouteForm = ({ route }) =>{
                         <Form.Radio toggle  checked={isActive} onChange={handleRadioChange}/>
                     </Form.Field>
                     <div>
-                        <VideoOptions route = {route}/>
+                        <VideoOptions key={route.id} route = {route} setSelectedDot={setSelectedDot}/>
                     </div>
                     <br></br>
                     <Button onClick={handleDeleteClick} >Delete Route</Button>

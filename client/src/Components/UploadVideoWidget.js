@@ -2,12 +2,10 @@ import { useEffect, useRef } from "react"
 import { useRecoilState } from "recoil";
 import { currentRoutes } from "../Recoil/routesRecoil";
 
-const UploadVideoWidget = ({route}) => {
+const UploadVideoWidget = ({route, setSelectedDot}) => {
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
-
-
     const videoToDatabase = (route, video_url) => {
         const updatedRoute = {
             video_url: video_url 
@@ -22,6 +20,7 @@ const UploadVideoWidget = ({route}) => {
         })
         .then((r)=>r.json())
         .then((updatedRoute)=>{
+            
             const updatedRouteList = allRoutes.map((route)=>{
                 if (route.id===updatedRoute.id) {
                     return updatedRoute;
@@ -30,6 +29,7 @@ const UploadVideoWidget = ({route}) => {
                 }
             })
             setAllRoutes(()=>updatedRouteList)
+            setSelectedDot(updatedRoute)
         })
     }
 

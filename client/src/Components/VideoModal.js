@@ -15,7 +15,7 @@ const VideoModal = ({route}) => {
         >
             <Modal.Header>Congrats! You climbed '{route.name}'</Modal.Header>
             <Modal.Content className="user_video" >
-                <video src={`https://res.cloudinary.com/dorqiv7fn/video/upload/v1685546643/userVideos/${route.video_url}.mov`} 
+                <video src={`https://res.cloudinary.com/dorqiv7fn/video/upload/v1685546643/${route.video_url}.mov`} 
                     width="320" 
                     height="240" 
                     controls>

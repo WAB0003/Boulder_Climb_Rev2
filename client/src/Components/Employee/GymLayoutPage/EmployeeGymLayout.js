@@ -69,7 +69,6 @@ function EmployeeGymLayout() {
     
   const handleDotClick = (route) => {
       setSelectedDot(route)
-      console.log(route)
   }
 
   const exitSideBar = () => {
@@ -96,7 +95,7 @@ function EmployeeGymLayout() {
               <div id="mySidenav" className="sidenav" style={selectedDot ? {width:"400px"} : {width:"0px"}}>
                 {/* <p>I am the Info sidebar for Dot Number {selectedDot.id}</p> */}
                 <div className="exitButton" onClick={exitSideBar}>&#x2716;</div>
-                {selectedDot?<UpdateRouteForm key={selectedDot.id} route={selectedDot} />:<></>}
+                {selectedDot?<UpdateRouteForm key={selectedDot.id} route={selectedDot} setSelectedDot={setSelectedDot} />:<></>}
               </div>        
           </div>
         </div>
