@@ -1,10 +1,12 @@
 import React from 'react'
-import { Button, Form, Select } from 'semantic-ui-react'
+import { Button, Form, Icon, Select } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { currentUser } from '../../Recoil/userRecoil'
 import { currentGyms } from '../../Recoil/gymsRecoil'
 import { currentRoutes } from '../../Recoil/routesRecoil'
+import UploadVideoWidget from '../UploadVideoWidget'
+import VideoOptions from './VideoOptions'
 
 //!Notes
 //! Pass down All Gyms as State
@@ -114,8 +116,13 @@ const UpdateRouteForm = ({ route }) =>{
                         <label>Active</label>
                         <Form.Radio toggle  checked={isActive} onChange={handleRadioChange}/>
                     </Form.Field>
-                    <Button type='submit' onClick={handleSubmit}>Confirm Update</Button>
+                    <div>
+                        <VideoOptions route = {route}/>
+                    </div>
+                    <br></br>
                     <Button onClick={handleDeleteClick} >Delete Route</Button>
+                    <div style={{padding:"5px"}} ></div>
+                    <Button type='submit' onClick={handleSubmit}>Confirm Update</Button>
                 </Form>
             </div>
     )

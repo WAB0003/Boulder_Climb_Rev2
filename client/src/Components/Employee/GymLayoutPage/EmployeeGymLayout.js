@@ -43,7 +43,6 @@ function EmployeeGymLayout() {
 
     const newDotObj = {
       name:"Untitled Route", 
-      video_url:"No Video",
       setter_id:user.id,
       rating: "No Rating",
       gym_id:1,
@@ -70,11 +69,14 @@ function EmployeeGymLayout() {
     
   const handleDotClick = (route) => {
       setSelectedDot(route)
+      console.log(route)
   }
 
   const exitSideBar = () => {
     setSelectedDot(false)
   }
+
+
 
   
 

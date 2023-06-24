@@ -41,35 +41,35 @@ def make_routes():
     
     route_list = []
     
-    route1 = Route(name="Big Cheesey", xPosition=27.56066571224051, yPosition=49.95443702290076, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route1 = Route(name="Big Cheesey", xPosition=50.354166666666664, yPosition=36.166666666666664, rating=1, video_url="RedRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
     route_list.append(route1)
     
-    route2 = Route(name="TableTop", xPosition=27.131173944166072, yPosition=32.5880248091603, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route2 = Route(name="TableTop", xPosition=44.135908440629464, yPosition=35.49809160305343, rating=0, video_url="YellowRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
     route_list.append(route2)
     
-    route3 = Route(name="Spanky", xPosition=40.159090909090914, yPosition=32.206345419847324, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route3 = Route(name="Spanky", xPosition=27.25464949928469, yPosition=36.45229007633588, rating=3, video_url="PurpleRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
     route_list.append(route3)
     
-    route4 = Route(name="Gandalf", xPosition=40.30225483178239, yPosition=49.57275763358779, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route4)
+    # route4 = Route(name="Gandalf", xPosition=40.30225483178239, yPosition=49.57275763358779, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route4)
     
-    route5 = Route(name="The Doozy", xPosition=58.48407301360058, yPosition=38.88573473282443, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route5)
+    # route5 = Route(name="The Doozy", xPosition=58.48407301360058, yPosition=38.88573473282443, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route5)
     
-    route6 = Route(name="Plot Twist", xPosition=63.35164638511096, yPosition=73.23687977099237, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route6)
+    # route6 = Route(name="Plot Twist", xPosition=63.35164638511096, yPosition=73.23687977099237, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route6)
     
-    route7 = Route(name="Dirty Dude", xPosition=68.79187544738727, yPosition=52.24451335877863, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route7)
+    # route7 = Route(name="Dirty Dude", xPosition=68.79187544738727, yPosition=52.24451335877863, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route7)
     
-    route8 = Route(name="Coles Crack", xPosition=90.69595561918396, yPosition=44.801765267175576, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route8)
+    # route8 = Route(name="Coles Crack", xPosition=90.69595561918396, yPosition=44.801765267175576, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route8)
     
-    route9 = Route(name="Cougarmilk", xPosition=10.81048675733715, yPosition=15.794131679389311, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route9)
+    # route9 = Route(name="Cougarmilk", xPosition=10.81048675733715, yPosition=15.794131679389311, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route9)
     
-    route10 = Route(name="Cowardly Lion", xPosition=28.849141016463847, yPosition=56.252146946564885, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
-    route_list.append(route10)
+    # route10 = Route(name="Cowardly Lion", xPosition=28.849141016463847, yPosition=56.252146946564885, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    # route_list.append(route10)
     
     db.session.add_all(route_list)
     db.session.commit()
@@ -97,11 +97,11 @@ def delete_climbs():
     print("Delete climb table...")
     Bill_active_routes = Route.query.filter((Route.active ==True) and (Route.gym_id == 1)).all()
     # print(example_route.id)
-    oneClimbExammple = Climb(user_video="userVideos/xzobitatj9ifzjx5insk", user_id = 1, route_id=Bill_active_routes[0].id)
-    twoClimbExammple = Climb(user_video="userVideos/zdawjf772wf9ldo8bab6", user_id = 1, route_id=Bill_active_routes[1].id)
-    threeClimbExammple = Climb(user_video="userVideos/f2odjzxi2u86jogucl7k", user_id = 1, route_id=Bill_active_routes[2].id)
-    db.session.add_all([oneClimbExammple, twoClimbExammple,threeClimbExammple])
-    db.session.commit()
+    # oneClimbExammple = Climb(user_video="userVideos/RedRoute", user_id = 1, route_id=Bill_active_routes[0].id)
+    # twoClimbExammple = Climb(user_video="userVideos/PurpleRoute", user_id = 1, route_id=Bill_active_routes[1].id)
+    # threeClimbExammple = Climb(user_video="userVideos/YellowRoute", user_id = 1, route_id=Bill_active_routes[2].id)
+    # db.session.add_all([oneClimbExammple, twoClimbExammple,threeClimbExammple])
+    # db.session.commit()
     
     print("created some climbs for climber Bill...")
         
