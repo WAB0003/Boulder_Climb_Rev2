@@ -2,18 +2,12 @@ import React from 'react'
 import { Button, Form, Icon, Select } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { currentUser } from '../../Recoil/userRecoil'
-import { currentGyms } from '../../Recoil/gymsRecoil'
-import { currentRoutes } from '../../Recoil/routesRecoil'
+import { currentRoutes, currentUser } from '../../Recoil/routesRecoil'
 import VideoOptions from './VideoOptions'
-
-//!Notes
-//! Pass down All Gyms as State
 
 const UpdateRouteForm = ({ route, setSelectedDot }) =>{
     //Pull in required state from Recoil
     const user = useRecoilValue(currentUser)
-    const allGyms = useRecoilValue(currentGyms)
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
     const [isActive, setIsActive] = useState(route.active)
     
@@ -21,12 +15,11 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
     const [formData, setFormData] = useState({
         name: route.name,
         rating:route.rating,
-        gym_id: route.gym_id,
         active: isActive
       })
 
     // Destruction state of FormData:
-    const { name, rating, gym_id, active } = formData
+    const { name, rating, active } = formData
 
     //! Handle form changes
     const handleChange = (e) => {
@@ -49,7 +42,6 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
             name: name,
             rating: rating, 
             setter_id: user.id,
-            gym_id: gym_id,
             active: active,
           }
 
@@ -90,9 +82,6 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
     }
 
 
-    const displayGyms = allGyms.map((gym)=>{
-        return <option key={gym.id} value={gym.id} name="gym_id" >{gym.name}</option>        
-        })
 
     return(
             <div className='updateRouteForm'>
@@ -105,11 +94,6 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
                     <Form.Field>
                         <label>Rating</label>
                         <input placeholder={route.rating} name="rating" value={rating} onChange={handleChange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <select name="gym_id"  onChange={handleChange} defaultValue={route.gym.id} >
-                            {displayGyms}
-                        </select>
                     </Form.Field>
                     <Form.Field>
                         <label>Active</label>

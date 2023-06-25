@@ -9,3 +9,8 @@ export const recoilSelectedDot = atom({
     key: 'recoilSelectedDot', 
     default: false
 });
+
+export const currentUser = atom({
+    key: 'currentUser', 
+    default: null
+});

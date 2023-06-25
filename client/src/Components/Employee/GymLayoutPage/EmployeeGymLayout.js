@@ -1,9 +1,8 @@
 import layoutImg from '../../../images/gymLayout.svg'  
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
+import { currentRoutes, recoilSelectedDot, currentUser } from '../../../Recoil/routesRecoil';
 import RouteDots from './RouteDots';
-import { currentRoutes, recoilSelectedDot } from '../../../Recoil/routesRecoil';
-import { currentUser } from '../../../Recoil/userRecoil';
 import UpdateRouteForm from '../UpdateRouteForm';
 
 
@@ -43,7 +42,6 @@ function EmployeeGymLayout() {
       name:"Untitled Route", 
       setter_id:user.id,
       rating: "No Rating",
-      gym_id:1,
       active:true,
       xPosition:(x),
       yPosition:(y)
@@ -90,7 +88,7 @@ function EmployeeGymLayout() {
         <div className='main_image_wrapper' style={{width:imageWidth}}  >
           <img src={layoutImg} id="main_image" alt="main_image" useMap='#imgMap' onClick = {addRouteDot} />
           {displayRouteDots}
-                {/* <RouteAddForm setAddRouteModalToggle={setAddRouteModalToggle} addRouteModalToggle={addRouteModalToggle} /> */}
+
           <div className="sideNavContainer" >
               <div id="mySidenav" className="sidenav" style={selectedDot ? {width:"400px"} : {width:"0px"}}>
                 {/* <p>I am the Info sidebar for Dot Number {selectedDot.id}</p> */}

@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom"
-import { currentUser } from "../../Recoil/userRecoil"
 import { useRecoilState } from "recoil"
+import { currentUser } from "../../Recoil/routesRecoil"
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ export default function NavEmployee() {
                         <Link className="nav_button" to="/routes">Routes</Link>
                     </li>
                     <li>
-                        <Link className="nav_button" to="/gym_layout">Gym Layout</Link>
+                        <Link className="nav_button" to="/gym_layout">Gym Map</Link>
                     </li>
                 </ul>
             </div>
