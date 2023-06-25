@@ -28,10 +28,10 @@ export default function NavEmployee() {
                         <Link className="nav_button_secondary" onClick={handleLogout}>Logout</Link>
                     </li>
                     <li>
-                        <Link className="nav_button" to="/gym_layout">Gym Layout</Link>
+                        <Link className="nav_button" to="/routes">Routes</Link>
                     </li>
                     <li>
-                        <Link className="nav_button" to="/routes">Routes</Link>
+                        <Link className="nav_button" to="/gym_layout">Gym Layout</Link>
                     </li>
                 </ul>
             </div>

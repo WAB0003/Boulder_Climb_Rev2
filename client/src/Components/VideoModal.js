@@ -11,7 +11,7 @@ const VideoModal = ({route}) => {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<div>View Video</div>}
+            trigger={<Button>View Video</Button>}
         >
             <Modal.Header>Congrats! You climbed '{route.name}'</Modal.Header>
             <Modal.Content className="user_video" >

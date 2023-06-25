@@ -1,33 +1,27 @@
 import "../../App.css"
 import React , { useState }  from 'react';
 import { Table, Container, Icon, Form, Button } from 'semantic-ui-react'
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import UpdateRouteModal from './UpdateRouteModal';
 import tableSorter from '../tableSorter';
-import AddRouteModal from './AddRouteModal';
 import { currentRoutes } from '../../Recoil/routesRecoil';
-import { currentGyms } from '../../Recoil/gymsRecoil';
-import { currentClimbs } from '../../Recoil/climbsRecoil';
-import EmployeeVideoModal from "./employeeVideoModal";
-
-
 
 const EmployeeHome = () => {
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
-    const allGyms = useRecoilValue( currentGyms )
-    const allClimbs = useRecoilValue( currentClimbs)
-    const [filterGym, setFilterGym] = useState("All")
+    const [filterActive, setFilterActive] = useState("All")
     const [sortby,setSortBy] = useState({
                                             order: "regular",
                                             attribute :null
                                         })
 
-    //! handle Filter of Gyms
+    //! handle Filter of Active vs NonActive Routes
     let filteredRoutes = allRoutes
-    if (filterGym === "All"){
+    if (filterActive === "All"){
         filteredRoutes = allRoutes
+    } else if (filterActive === "Active"){
+        filteredRoutes = allRoutes.filter((route)=>route.active)
     } else {
-        filteredRoutes = allRoutes.filter((route)=>route.gym.name === filterGym)
+        filteredRoutes = allRoutes.filter((route)=>route.active === false)
     }
     
     //!Created table sorter function that handles specific attributes from tables and sorts accordingly
@@ -35,21 +29,8 @@ const EmployeeHome = () => {
     
 
     //!Handle Functions
-    const handleDeleteClick=(route)=>{
-        fetch(`/routes/${route.id}`,{
-        method: "DELETE",
-        })
-        // .then(r=>r.json())
-        .then(()=>handleDeleteRoute(route))
-    }
-
-    const handleDeleteRoute = (deletedRoute) =>{
-        const updatedRouteList = allRoutes.filter((route)=>route.id !== deletedRoute.id)
-        setAllRoutes(updatedRouteList)
-    }
-
     const handleFilter = (e) => {
-        setFilterGym(e.target.value)
+        setFilterActive(e.target.value)
     }
 
     const handleSort = (e) => {
@@ -65,7 +46,7 @@ const EmployeeHome = () => {
     }
 
     const handleTableReset = (e) => {
-        setFilterGym("All")
+        setFilterActive("All")
         setSortBy({
             order: "regular",
             attribute :null
@@ -75,14 +56,7 @@ const EmployeeHome = () => {
 
     //Variable to display all routes as a row in the Table:
     const eachRoute = displayRoutes.map((route) => {
-        const climberVideosOfRoutes = allClimbs.filter(climb=>{
-            if (climb.user_video && climb.route.id === route.id){
-                return climb
-            }
-        })
-
-        
-        
+      
         return (
             <Table.Row key={route.id}>
                 <Table.Cell>{route.id}</Table.Cell>
@@ -90,15 +64,10 @@ const EmployeeHome = () => {
                 <Table.Cell>{route.name}</Table.Cell>
                 <Table.Cell>V-{route.rating}</Table.Cell>
                 <Table.Cell>{route.setter.first_name} {route.setter.last_name}</Table.Cell>
-                <Table.Cell>{route.gym.name}</Table.Cell>
                 <Table.Cell>{route.likes.length}</Table.Cell>
-                <Table.Cell className="center_in_cell" >
-                        {climberVideosOfRoutes.length>0?<EmployeeVideoModal climbs={climberVideosOfRoutes} route={route}/>:""}
-                </Table.Cell>
                 <Table.Cell>
                     <div className='table_icons' >
                         <UpdateRouteModal route={route}/>
-                        <Icon className='table_icon' name='delete' onClick={()=>handleDeleteClick(route)}/>
                     </div>
                 </Table.Cell>
             </Table.Row>
@@ -117,14 +86,13 @@ const EmployeeHome = () => {
                             <Form className='filter_options' >
                                 <Form.Field control='select' onChange={handleFilter}>
                                     <option>All</option>
-                                    {allGyms.map((each_gym)=><option key={each_gym.id} >{each_gym.name}</option>)}
+                                    <option>Active</option>
+                                    <option>Not Active</option>
                                 </Form.Field>
                             </Form>
                             <Button className='filter_options' onClick={handleTableReset} >Reset Table</Button>
                         </div>
                     </div>
-
-                    {<AddRouteModal />}
                 </div >
                 <Table celled >
                     <Table.Header>
@@ -145,12 +113,8 @@ const EmployeeHome = () => {
                                 <option className='tableHeaders'  value="setter" onClick={handleSort}>Setter</option>
                             </Table.HeaderCell>
                             <Table.HeaderCell>
-                                <option className='tableHeaders'  value="gym" onClick={handleSort}>Gym</option>
-                            </Table.HeaderCell>
-                            <Table.HeaderCell>
                                 <option className='tableHeaders'  value="likes" onClick={handleSort}>Likes</option>
                             </Table.HeaderCell>
-                            <Table.HeaderCell>User Videos</Table.HeaderCell>
                             <Table.HeaderCell>Options</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>

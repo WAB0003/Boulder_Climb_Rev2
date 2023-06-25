@@ -3,8 +3,6 @@ import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
 import RouteDots from './RouteDots';
-import RouteAddForm from './RouteAddForm';
-import { Icon } from 'semantic-ui-react';
 import { currentRoutes } from '../../../Recoil/routesRecoil';
 import { currentUser } from '../../../Recoil/userRecoil';
 import UpdateRouteForm from '../UpdateRouteForm';
@@ -41,12 +39,13 @@ function EmployeeGymLayout() {
     const x = ((e.pageX - ((windowWidth-imageWidth)/2))-(dotDiameter/2))/imageWidth*100;
     const y = (e.pageY-(dotDiameter/2)-navbarHeight)/imageHeight*100;
 
+    // a new dot object is created in preparation to send to database to persist 
     const newDotObj = {
       name:"Untitled Route", 
       setter_id:user.id,
       rating: "No Rating",
       gym_id:1,
-      active:false,
+      active:true,
       xPosition:(x),
       yPosition:(y)
     }
@@ -81,7 +80,9 @@ function EmployeeGymLayout() {
 
 
   //!Display All Routes as Dots on the page
-  const displayRouteDots = allRoutes.map((eachRoute)=>{
+  const activeRoutes = allRoutes.filter((eachRoute)=>eachRoute.active === true)
+
+  const displayRouteDots = activeRoutes.map((eachRoute)=>{
     return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} handleDotClick={handleDotClick}/>
   })
   

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useRecoilState } from "recoil";
 import { currentRoutes } from "../Recoil/routesRecoil";
+import { Button } from "semantic-ui-react";
 
 const UploadVideoWidget = ({route, setSelectedDot}) => {
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
@@ -29,7 +30,7 @@ const UploadVideoWidget = ({route, setSelectedDot}) => {
                 }
             })
             setAllRoutes(()=>updatedRouteList)
-            setSelectedDot(updatedRoute)
+            if(setSelectedDot){setSelectedDot(updatedRoute)}
         })
     }
 
@@ -46,7 +47,7 @@ const UploadVideoWidget = ({route, setSelectedDot}) => {
         });
     },[])
     return (
-        <div onClick={() => widgetRef.current.open()} >Upload New Video</div>
+        <Button onClick={() => widgetRef.current.open()} >Upload Video</Button>
     )
 
 }

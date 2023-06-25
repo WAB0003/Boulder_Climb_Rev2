@@ -5,7 +5,6 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { currentUser } from '../../Recoil/userRecoil'
 import { currentGyms } from '../../Recoil/gymsRecoil'
 import { currentRoutes } from '../../Recoil/routesRecoil'
-import UploadVideoWidget from '../UploadVideoWidget'
 import VideoOptions from './VideoOptions'
 
 //!Notes
@@ -116,13 +115,18 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
                         <label>Active</label>
                         <Form.Radio toggle  checked={isActive} onChange={handleRadioChange}/>
                     </Form.Field>
-                    <div>
+                    <div style={{justifyContent:"center", display:"flex"}} >
                         <VideoOptions key={route.id} route = {route} setSelectedDot={setSelectedDot}/>
                     </div>
                     <br></br>
-                    <Button onClick={handleDeleteClick} >Delete Route</Button>
-                    <div style={{padding:"5px"}} ></div>
-                    <Button type='submit' onClick={handleSubmit}>Confirm Update</Button>
+                    <div style={{justifyContent:"center", display:"flex"}} >
+                        <Button.Group>
+                            <Button type='submit' onClick={handleSubmit} positive>Confirm Update</Button>
+                            <Button.Or />
+                            <Button onClick={handleDeleteClick} negative>Delete Route</Button>
+                        </Button.Group>
+                    </div>
+
                 </Form>
             </div>
     )
