@@ -81,5 +81,10 @@
   .exitButton:hover{
     font-size: x-large;
   }
-  
+
+
+  @keyframes blinker {
+    50% { opacity: 0.2; }
+  }
+ 
   

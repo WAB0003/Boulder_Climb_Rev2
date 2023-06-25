@@ -2,7 +2,7 @@ import layoutImg from '../../../images/gymLayout.svg'
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
 import RouteDots from './RouteDots';
-import { currentRoutes } from '../../../Recoil/routesRecoil';
+import { currentRoutes, recoilSelectedDot } from '../../../Recoil/routesRecoil';
 import { currentUser } from '../../../Recoil/userRecoil';
 import UpdateRouteForm from '../UpdateRouteForm';
 
@@ -63,7 +63,7 @@ function EmployeeGymLayout() {
   }
 
 
-  const [selectedDot, setSelectedDot] = useState(false)
+  const [selectedDot, setSelectedDot] = useRecoilState(recoilSelectedDot)
     
   const handleDotClick = (route) => {
       setSelectedDot(route)
@@ -82,7 +82,7 @@ function EmployeeGymLayout() {
   const activeRoutes = allRoutes.filter((eachRoute)=>eachRoute.active === true)
 
   const displayRouteDots = activeRoutes.map((eachRoute)=>{
-    return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} handleDotClick={handleDotClick}/>
+    return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} handleDotClick={handleDotClick} selectedDot={selectedDot}/>
   })
   
   return (

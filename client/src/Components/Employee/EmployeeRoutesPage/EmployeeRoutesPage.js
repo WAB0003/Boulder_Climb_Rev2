@@ -1,12 +1,16 @@
 import React , { useState }  from 'react';
-import { Table, Container, Form, Button } from 'semantic-ui-react'
-import { useRecoilState } from 'recoil';
+import { Table, Container, Form, Button, Icon } from 'semantic-ui-react'
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import UpdateRouteModal from './UpdateRouteModal';
 import tableSorter from '../../tableSorter';
-import { currentRoutes } from '../../../Recoil/routesRecoil';  //*Change this
+import { currentRoutes, recoilSelectedDot } from '../../../Recoil/routesRecoil';  
+import { useNavigate } from 'react-router-dom';
+
 
 const EmployeeHome = () => {
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
+    const setSelectedDot = useSetRecoilState(recoilSelectedDot)
+    const navigate = useNavigate()
     const [filterActive, setFilterActive] = useState("All")
     const [sortby,setSortBy] = useState({
                                             order: "regular",
@@ -52,6 +56,13 @@ const EmployeeHome = () => {
         })
     }
 
+    const handleGoToClick = (route) => {
+        setSelectedDot(route)
+        navigate("/gym_layout")
+
+        
+    }
+
 
     //Variable to display all routes as a row in the Table:
     const eachRoute = displayRoutes.map((route) => {
@@ -65,8 +76,9 @@ const EmployeeHome = () => {
                 <Table.Cell>{route.setter.first_name} {route.setter.last_name}</Table.Cell>
                 <Table.Cell>{route.likes.length}</Table.Cell>
                 <Table.Cell>
-                    <div className='table_icons' >
+                    <div  >
                         <UpdateRouteModal route={route}/>
+                        {route.active?<Icon onClick={()=>handleGoToClick(route)} className='table_icon' name="share square"/>:""}
                     </div>
                 </Table.Cell>
             </Table.Row>

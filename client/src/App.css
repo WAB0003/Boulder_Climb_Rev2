@@ -60,9 +60,11 @@
   align-items: center;
   flex:1;
   display: flex;
+
 }
 
 .table_icon {
+  padding-right: 20%;
   justify-content: space-between;
   align-items: center;
   flex:1;

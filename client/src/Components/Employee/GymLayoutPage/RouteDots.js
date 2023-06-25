@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function RouteDots({ route, dotDiameter, handleDotClick}) {
+function RouteDots({ route, dotDiameter, handleDotClick, selectedDot}) {
 
     // id={eachRoute.id} xPosition={eachRoute.xPosition} yPosition={eachRoute.yPosition}
     const {id, xPosition, yPosition, rating} = route
@@ -23,7 +23,7 @@ function RouteDots({ route, dotDiameter, handleDotClick}) {
     }
  
     return (
-        <div onClick={()=>handleDotClick(route)}>
+        <div onClick={()=>handleDotClick(route)} style={(selectedDot.id === route.id)?{animation: "blinker 1s linear infinite"}:{animation:"none"}} >
             {/* The actual Circle Representing Each Route */}
             <svg className='dots'height={dotDiameter} width={dotDiameter} style={{ left:xPosition+"%", top:yPosition+"%"}} >
                 <circle id={id}  cx={dotDiameter/2} cy={dotDiameter/2} r={dotDiameter/2-1} stroke="black" strokeWidth="1" fill={dotColor} />
