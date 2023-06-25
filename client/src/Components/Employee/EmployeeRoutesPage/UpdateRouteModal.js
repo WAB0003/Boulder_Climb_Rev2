@@ -1,6 +1,6 @@
 import React,  {useState } from 'react'
 import { Button, Modal, Icon } from 'semantic-ui-react'
-import UpdateRouteForm from './UpdateRouteForm'
+import UpdateRouteForm from '../UpdateRouteForm' //*This will need Changing
 
 const UpdateRouteModal = ({route}) => {
     const [open, setOpen] = useState(false)
@@ -14,7 +14,6 @@ const UpdateRouteModal = ({route}) => {
             trigger={<Icon className='table_icon' name='edit'/>}
             size='mini'
         >
-            
             <Modal.Content image>
                 <Modal.Description>
                     <UpdateRouteForm route={route} setOpen={setOpen} />

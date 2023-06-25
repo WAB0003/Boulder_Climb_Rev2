@@ -1,10 +1,9 @@
-import "../../App.css"
 import React , { useState }  from 'react';
-import { Table, Container, Icon, Form, Button } from 'semantic-ui-react'
+import { Table, Container, Form, Button } from 'semantic-ui-react'
 import { useRecoilState } from 'recoil';
 import UpdateRouteModal from './UpdateRouteModal';
-import tableSorter from '../tableSorter';
-import { currentRoutes } from '../../Recoil/routesRecoil';
+import tableSorter from '../../tableSorter';
+import { currentRoutes } from '../../../Recoil/routesRecoil';  //*Change this
 
 const EmployeeHome = () => {
     const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)

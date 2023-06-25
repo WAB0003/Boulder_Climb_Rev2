@@ -1,5 +1,4 @@
 import layoutImg from '../../../images/gymLayout.svg'  
-import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
 import RouteDots from './RouteDots';

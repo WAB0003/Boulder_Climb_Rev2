@@ -1,4 +1,5 @@
 import './App.css';
+import './GymVISUALS.css'
 import { useEffect, useState } from 'react';
 import LoginPage from './Components/LoginPage';
 import UserApp from './Components/User/UserApp';
