@@ -44,13 +44,13 @@ def make_gyms():
 def make_routes():
     route_list = []
     
-    route1 = Route(name="Big Cheesey", xPosition=50.354166666666664, yPosition=36.166666666666664, rating=1, video_url="userVideos/RedRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route1 = Route(name="Big Cheesey", xPosition=50.354166666666664, yPosition=36.166666666666664, rating=1, video_url="userVideos/RedRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
     route_list.append(route1)
     
-    route2 = Route(name="TableTop", xPosition=44.135908440629464, yPosition=35.49809160305343, rating=0, video_url="userVideos/YellowRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route2 = Route(name="TableTop", xPosition=44.135908440629464, yPosition=35.49809160305343, rating=0, video_url="userVideos/YellowRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
     route_list.append(route2)
     
-    route3 = Route(name="Spanky", xPosition=27.25464949928469, yPosition=36.45229007633588, rating=3, video_url="userVideos/PurpleRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
+    route3 = Route(name="Spanky", xPosition=27.25464949928469, yPosition=36.45229007633588, rating=3, video_url="userVideos/PurpleRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
     route_list.append(route3)
     
     # route4 = Route(name="Gandalf", xPosition=40.30225483178239, yPosition=49.57275763358779, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))

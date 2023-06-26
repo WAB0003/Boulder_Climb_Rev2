@@ -76,17 +76,17 @@ const UserHome = () => {
             <h1 className="User_Page_Titles" >Home</h1>
             <div className="statistics" >
                 <h2>Gym Stats:</h2>
-                    {/* <h3>% {gym_completion} Completion </h3> */}
+                    <div style={{fontWeight:"bold", fontSize:"medium" }} >{gym_completion} % Completion </div>
                     <div className="stat_names stat_col" >
                         <span>Routes Available</span>
                         <span>Active Routes Climbed</span>
                     </div>
                     <div className="stat_values stat_col" >
-                        {/* <span>{ActiveRoutes.length}</span>
-                        <span>{ActiveRoutesClimbed.length}</span> */}
+                        <span>{ActiveRoutes.length}</span>
+                        <span>{ActiveRoutesClimbed.length}</span>
                     </div>
             </div>
-            {/* {generalStats()}  */}
+            {generalStats()} 
         </div>
     ) 
 }

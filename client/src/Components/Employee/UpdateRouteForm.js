@@ -78,7 +78,7 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
 
     const handleDeleteRoute = (deletedRoute) =>{
         const updatedRouteList = allRoutes.filter((route)=>route.id !== deletedRoute.id)
-        setAllRoutes(updatedRouteList)
+        setAllRoutes(()=>updatedRouteList)
     }
 
 
