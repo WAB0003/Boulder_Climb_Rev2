@@ -14,3 +14,14 @@ export const currentUser = atom({
     key: 'currentUser', 
     default: null
 });
+
+export const currentClimbs = atom({
+    key: 'currentClimbs', 
+    default: []
+});
+
+export const currentLikes = atom({
+    key: 'currentLikes', 
+    default: []
+});
+

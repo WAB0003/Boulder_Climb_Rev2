@@ -11,7 +11,7 @@ const EmployeeApp = () => {
         <div>
           <NavEmployee />
           <Routes>
-            <Route path="/" element={<EmployeeRoutesPage />}/>
+            <Route path="/" element={<EmployeeGymLayout />}/>
             <Route path="/gym_layout" element={<EmployeeGymLayout />} />
             <Route path="/routes" element={<EmployeeRoutesPage />}/>
           </Routes>

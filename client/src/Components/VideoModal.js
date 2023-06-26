@@ -1,7 +1,5 @@
 import { Icon, Modal, Button } from "semantic-ui-react";
 import { useState } from "react";
-// import VideoPlayer from "./VideoPlayer";
-// import "../../App.css"
 
 const VideoModal = ({route}) => {
     const [open, setOpen] = useState(false)
@@ -12,12 +10,12 @@ const VideoModal = ({route}) => {
             onOpen={() => setOpen(true)}
             open={open}
             trigger={<Button>View Video</Button>}
+            style={{width:"auto"}}
         >
-            <Modal.Header>Congrats! You climbed '{route.name}'</Modal.Header>
-            <Modal.Content className="user_video" >
+            <Modal.Header className="centerItems" >{route.name}'</Modal.Header>
+            <Modal.Content className="centerItems" >
                 <video src={`https://res.cloudinary.com/dorqiv7fn/video/upload/v1685546643/${route.video_url}.mov`} 
-                    width="320" 
-                    height="240" 
+                    height="600" 
                     controls>
                 </video>
             </Modal.Content>

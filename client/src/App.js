@@ -1,21 +1,16 @@
 import './App.css';
 import './GymVISUALS.css'
-import { useEffect, useState } from 'react';
 import LoginPage from './Components/LoginPage';
 import UserApp from './Components/User/UserApp';
 import EmployeeApp from './Components/Employee/EmployeeApp';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { currentGyms } from './Recoil/gymsRecoil';
-import { currentRoutes } from './Recoil/routesRecoil';
-import { currentUser } from './Recoil/userRecoil';
-import { currentLikes } from './Recoil/likesRecoil';
-import { currentClimbs } from './Recoil/climbsRecoil';
+import { useEffect } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { currentClimbs, currentLikes, currentRoutes, currentUser } from './Recoil/routesRecoil';
 
 
 function App() {
 
   const [user, updateUser ] = useRecoilState(currentUser)
-  const setAllGyms = useSetRecoilState(currentGyms)
   const setAllRoutes = useSetRecoilState(currentRoutes)
   const setAllLikes = useSetRecoilState(currentLikes)
   const setAllClimbs = useSetRecoilState(currentClimbs)
@@ -37,12 +32,6 @@ function App() {
     .then(routes=>setAllRoutes(routes))
   },[])
   
-  //Get all gyms upon initial render:
-  useEffect(()=>{
-      fetch("/gyms")
-      .then(r=>r.json())
-      .then(gyms=>setAllGyms(gyms))
-  },[])
 
   useEffect(()=>{
     fetch("/likes")

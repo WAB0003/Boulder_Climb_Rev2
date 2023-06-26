@@ -1,16 +1,17 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Table, Icon } from "semantic-ui-react";
-import { currentUser } from "../../Recoil/userRecoil";
-import { currentLikes} from "../../Recoil/likesRecoil";
-import { currentClimbs} from "../../Recoil/climbsRecoil";
+import { currentClimbs, currentLikes, currentUser } from "../../../Recoil/routesRecoil";
+import { Icon, Button, Card } from "semantic-ui-react";
+import VideoDisplay from "../VideoDisplay";
 
-const CurrentRouteRow = ({route}) => {
-    const user = useRecoilValue (currentUser)
+
+const RouteInfo = ({ route, setSelectedDot }) =>{
+
+    const {id, name, rating, video_url, setter } = route
+    const user = useRecoilValue(currentUser)
     const [allLikes, setAllLikes] = useRecoilState(currentLikes)
     const [allClimbs, setAllClimbs] = useRecoilState(currentClimbs)
 
-    const allRouteLikes = allLikes?.filter((like)=>like.route.id === route.id)
-
+    const allRouteLikes = allLikes?.filter((like)=>like.route.id === id)
 
     //get individual Like for the specific route and user:
     const likeArray = allLikes.filter((like)=>{
@@ -92,20 +93,35 @@ const CurrentRouteRow = ({route}) => {
         } 
     }
 
+
     return(
-        <Table.Row key={route.id}>
-            <Table.Cell>{route.name}</Table.Cell>
-            <Table.Cell>V-{route.rating}</Table.Cell>
-            <Table.Cell>{route.setter.first_name} {route.setter.last_name}</Table.Cell>
-            <Table.Cell>{allRouteLikes.length}</Table.Cell>
-            <Table.Cell>
-                <div className='table_icons' >
-                    <Icon className='table_icon'  color={(specificLike) ? "green" : "grey"} name={(specificLike) ? "heart" : "heart outline"} onClick={handleLikeButton}/>
-                    <Icon className='table_icon'  color={(specificClimb) ? "green" : "grey"} name={(specificClimb) ? "check circle" : "check circle outline"} onClick={handleCheckButton}/>
+        <div >
+            <h1>{name}</h1>
+            <div>Setter: {setter.first_name} {setter.last_name}</div>
+            <div>Rating: V-{rating}</div>
+            <div className="centerItems" style={{backgroundColor:"rgb(225, 235, 237)"}} >
+                <VideoDisplay video_url={video_url} />
+            </div>
+            <div className="table_icons" >
+                <div>{allRouteLikes.length} Total Likes</div>
+            </div>
+            <div className="extraInfoContainer" >
+                <div className="table_icons" style={{paddingLeft:"35%", paddingRight:"35%"}} >
+                    <div className="centerItems" >
+                        <Icon color={(specificLike) ? "green" : "grey"} name={(specificLike) ? "heart" : "heart outline"} onClick={handleLikeButton} />
+                        <div>like</div>
+                    </div>
+                    <div className="centerItems">
+                        <Icon color={(specificClimb) ? "green" : "grey"} name={(specificClimb) ? "check circle" : "check circle outline"} onClick={handleCheckButton} />
+                        <div>climb?</div>
+                    </div>
                 </div>
-            </Table.Cell>
-        </Table.Row>
+            </div>
+        </div>
+
+
+
     )
 }
 
-export default CurrentRouteRow;
+export default RouteInfo;

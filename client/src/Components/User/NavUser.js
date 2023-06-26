@@ -1,7 +1,7 @@
 import "../../App.css"
-import { currentUser } from "../../Recoil/userRecoil"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { Link, useNavigate } from "react-router-dom"
+import { currentUser } from "../../Recoil/routesRecoil"
 
 
 
@@ -22,14 +22,6 @@ export default function NavUser() {
           })
      }
 
-     const handleRedirect = (e) => {
-        if (user.current_gym){
-            navigate("/routes")
-        }else{
-            navigate("/gyms")
-            alert("In order to view Current Routes, a gym must be selected!\nYou are being directed to gym selection")
-        }
-     }
 
     return (
         <nav className="navbar">
@@ -43,14 +35,10 @@ export default function NavUser() {
                         <Link className="nav_button" to="/climbed_routes">Climbed Routes</Link>
                     </li>
                     <li>
-                        <div className="nav_button" onClick={handleRedirect} to="/routes">Current Routes</div>
+                        <Link className="nav_button" to="/routes">Current Routes</Link>
                     </li>
                     <li>
                         <Link className="nav_button" to="/">Home</Link>
-                    </li>
-                    <li>
-                        <h3>{user.current_gym ? `Selected Gym: ${user.current_gym.name}` : "No Gym Selected"}</h3>
-                        <Link className="nav_button_secondary"  to="/gyms">Select Preferred Gym</Link>
                     </li>
                 </ul>
             </div>

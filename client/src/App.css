@@ -269,3 +269,9 @@
 .testing{
   width:50px
 }
+
+.extraInfoContainer {
+  
+  border-top: solid #555555;
+  border-width: 1px;
+}

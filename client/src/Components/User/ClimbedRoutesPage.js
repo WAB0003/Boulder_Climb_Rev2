@@ -1,7 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { currentUser } from "../../Recoil/userRecoil";
+import { currentClimbs, currentUser } from "../../Recoil/routesRecoil";
 import { Table, Container, Icon } from "semantic-ui-react";
-import { currentClimbs } from "../../Recoil/climbsRecoil";
 import ClimbedRouteRow from "./ClimbedRouteRow";
 import { Link } from "react-router-dom";
 
