@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom"
 import { useRecoilState } from "recoil"
-import { currentUser } from "../../Recoil/routesRecoil"
+import { currentUser } from "../../Recoil/recoilManagement"
 import { Link, useNavigate } from "react-router-dom";
 
 

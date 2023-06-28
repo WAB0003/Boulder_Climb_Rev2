@@ -1,7 +1,7 @@
 import "../../App.css"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { Link, useNavigate } from "react-router-dom"
-import { currentUser } from "../../Recoil/routesRecoil"
+import { currentUser } from "../../Recoil/recoilManagement"
 
 
 

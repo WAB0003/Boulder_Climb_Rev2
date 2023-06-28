@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { useRecoilState } from "recoil";
-import { currentRoutes } from "../Recoil/routesRecoil";
+import { currentRoutes } from "../Recoil/recoilManagement";
 import { Button } from "semantic-ui-react";
 
 const UploadVideoWidget = ({route, setSelectedDot}) => {
@@ -45,7 +45,7 @@ const UploadVideoWidget = ({route, setSelectedDot}) => {
         },function(error, result){
             videoToDatabase(route, result.info.public_id);
         });
-    },[])
+    },[route])
     return (
         <Button onClick={() => widgetRef.current.open()} >Upload Video</Button>
     )

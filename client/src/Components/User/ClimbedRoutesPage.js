@@ -1,5 +1,5 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import { currentClimbs, currentUser } from "../../Recoil/routesRecoil";
+import { useRecoilValue } from "recoil";
+import { currentClimbs, currentUser } from "../../Recoil/recoilManagement";
 import { Table, Container, Icon } from "semantic-ui-react";
 import ClimbedRouteRow from "./ClimbedRouteRow";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ClimbedRoutesPage = () => {
 
-  const [allClimbs, setAllClimbs] = useRecoilState(currentClimbs)
+  const allClimbs = useRecoilValue(currentClimbs)
   const user = useRecoilValue(currentUser)
   
   const userClimbs = allClimbs?.filter((climb)=>(climb.user.id=== user.id))

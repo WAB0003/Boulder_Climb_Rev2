@@ -1,21 +1,19 @@
 import layoutImg from '../../../images/gymLayout.svg'  
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
-import { currentRoutes, recoilSelectedDot, currentUser } from '../../../Recoil/routesRecoil';
+import { currentRoutes, recoilSelectedDot } from '../../../Recoil/recoilManagement';
 import RouteDots from './RouteDots';
 import RouteInfo from './RouteInfo';
 
 
 
 function CurrentRoutesPage() {
-
-  const user = useRecoilValue(currentUser)
-  const [ allRoutes, setAllRoutes ] = useRecoilState(currentRoutes)
+  const allRoutes = useRecoilValue(currentRoutes)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const imageWidth = windowWidth * .5
   const dotDiameter = (imageWidth*.02)      //The size of each dot is relative to the image width.
-  const navbarHeight = 80 //The height of Navbar per from App.css
+  // const navbarHeight = 80 //The height of Navbar per from App.css
 
 
   //Centering the image caused positional errors for placing the dots

@@ -1,7 +1,7 @@
 import layoutImg from '../../../images/gymLayout.svg'  
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil"
-import { currentRoutes, recoilSelectedDot, currentUser } from '../../../Recoil/routesRecoil';
+import { currentRoutes, recoilSelectedDot, currentUser } from '../../../Recoil/recoilManagement';
 import RouteDots from './RouteDots';
 import UpdateRouteForm from '../UpdateRouteForm';
 

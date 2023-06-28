@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil"
-import { currentClimbs, currentRoutes, currentUser } from "../../Recoil/routesRecoil"
+import { currentClimbs, currentRoutes, currentUser } from "../../Recoil/recoilManagement"
 
 
 

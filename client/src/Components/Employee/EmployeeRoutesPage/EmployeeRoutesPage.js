@@ -1,14 +1,14 @@
 import React , { useState }  from 'react';
 import { Table, Container, Form, Button, Icon } from 'semantic-ui-react'
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import UpdateRouteModal from './UpdateRouteModal';
 import tableSorter from '../../tableSorter';
-import { currentRoutes, recoilSelectedDot } from '../../../Recoil/routesRecoil';  
+import { currentRoutes, recoilSelectedDot } from '../../../Recoil/recoilManagement';  
 import { useNavigate } from 'react-router-dom';
 
 
 const EmployeeHome = () => {
-    const [allRoutes, setAllRoutes] = useRecoilState(currentRoutes)
+    const allRoutes = useRecoilValue(currentRoutes)
     const setSelectedDot = useSetRecoilState(recoilSelectedDot)
     const navigate = useNavigate()
     const [filterActive, setFilterActive] = useState("All")

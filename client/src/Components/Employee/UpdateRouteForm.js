@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Form, Icon, Select } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { useState } from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { currentRoutes, currentUser } from '../../Recoil/routesRecoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { currentRoutes, currentUser } from '../../Recoil/recoilManagement'
 import VideoOptions from './VideoOptions'
 
 const UpdateRouteForm = ({ route, setSelectedDot }) =>{

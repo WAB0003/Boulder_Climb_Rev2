@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { currentClimbs, currentLikes, currentUser } from "../../../Recoil/routesRecoil";
-import { Icon, Button, Card } from "semantic-ui-react";
+import { currentClimbs, currentLikes, currentUser } from "../../../Recoil/recoilManagement";
+import { Icon } from "semantic-ui-react";
 import VideoDisplay from "../VideoDisplay";
 
 

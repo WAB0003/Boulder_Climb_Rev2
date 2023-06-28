@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import { useSetRecoilState } from 'recoil'
 import main_logo from '../images/main_logo.jpg'
-import { currentUser } from '../Recoil/routesRecoil'
+import { currentUser } from '../Recoil/recoilManagement'
 
 
 const LoginPage = () => {
