@@ -1,5 +1,4 @@
 {
-  "homepage": "https://WAB0003.github.io/Boulder_Climb_Rev2",
   "name": "client",
   "proxy": "http://127.0.0.1:5555",
   "version": "0.1.0",
