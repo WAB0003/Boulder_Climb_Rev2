@@ -33,7 +33,6 @@ const ClimbedRoutesPage = () => {
                             <Table.HeaderCell>Route Name</Table.HeaderCell>
                             <Table.HeaderCell>Rating</Table.HeaderCell>
                             <Table.HeaderCell>Setter</Table.HeaderCell>
-                            <Table.HeaderCell>Gym</Table.HeaderCell>
                             <Table.HeaderCell>Date Climbed</Table.HeaderCell>
                             <Table.HeaderCell>Options</Table.HeaderCell>
                         </Table.Row>

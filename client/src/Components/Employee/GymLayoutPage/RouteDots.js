@@ -1,9 +1,12 @@
 import { useState } from "react"
+import { useRecoilState, useSetRecoilState } from "recoil"
+import { recoilSelectedDot } from "../../../Recoil/recoilManagement"
 
-function RouteDots({ route, dotDiameter, handleDotClick, selectedDot}) {
+function RouteDots({ route, dotDiameter}) {
 
     // id={eachRoute.id} xPosition={eachRoute.xPosition} yPosition={eachRoute.yPosition}
     const {id, xPosition, yPosition, rating} = route
+    const [selectedDot, setSelectedDot] = useRecoilState(recoilSelectedDot)
 
     //Write an If statement to compute the color of each route based on it's rating.
     let dotColor
@@ -21,9 +24,16 @@ function RouteDots({ route, dotDiameter, handleDotClick, selectedDot}) {
         }
         dotColor = ratingColor[rating] 
     }
+
+    const handleDotClick = () => {
+        setSelectedDot(route)
+        // setSelectedDot(route)
+        console.log("test")
+    }
+
  
     return (
-        <div onClick={()=>handleDotClick(route)} style={(selectedDot.id === route.id)?{animation: "blinker 1s linear infinite"}:{animation:"none"}} >
+        <div onClick={handleDotClick} style={(selectedDot.id === route.id)?{animation: "blinker 1s linear infinite"}:{animation:"none"}} >
             {/* The actual Circle Representing Each Route */}
             <svg className='dots'height={dotDiameter} width={dotDiameter} style={{ left:xPosition+"%", top:yPosition+"%"}} >
                 <circle id={id}  cx={dotDiameter/2} cy={dotDiameter/2} r={dotDiameter/2-1} stroke="black" strokeWidth="1" fill={dotColor} />

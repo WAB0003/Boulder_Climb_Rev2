@@ -14,7 +14,7 @@ function EmployeeGymLayout() {
 
   const imageWidth = windowWidth * .5
   const dotDiameter = (imageWidth*.02)      //The size of each dot is relative to the image width.
-  const navbarHeight = 80 //The height of Navbar per from App.css
+  const navbarHeight = 80                   //The height of Navbar per from App.css
 
 
   //Centering the image caused positional errors for placing the dots
@@ -33,6 +33,7 @@ function EmployeeGymLayout() {
   //! Add Dot Click 
   const addRouteDot = (e) => {
     //When image is clicked, a dot will appear. Compute the height/width as a percentage relative to the image location
+    setSelectedDot(false)
     const imageHeight = document.querySelector('#main_image').clientHeight
     const x = ((e.pageX - ((windowWidth-imageWidth)/2))-(dotDiameter/2))/imageWidth*100;
     const y = (e.pageY-(dotDiameter/2)-navbarHeight)/imageHeight*100;
@@ -62,10 +63,9 @@ function EmployeeGymLayout() {
 
 
   const [selectedDot, setSelectedDot] = useRecoilState(recoilSelectedDot)
+  console.log(selectedDot)
     
-  const handleDotClick = (route) => {
-      setSelectedDot(route)
-  }
+  
 
   const exitSideBar = () => {
     setSelectedDot(false)
@@ -80,7 +80,7 @@ function EmployeeGymLayout() {
   const activeRoutes = allRoutes.filter((eachRoute)=>eachRoute.active === true)
 
   const displayRouteDots = activeRoutes.map((eachRoute)=>{
-    return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} handleDotClick={handleDotClick} selectedDot={selectedDot}/>
+    return <RouteDots key={eachRoute.id} route={eachRoute} dotDiameter={dotDiameter} selectedDot={selectedDot}/>
   })
   
   return (

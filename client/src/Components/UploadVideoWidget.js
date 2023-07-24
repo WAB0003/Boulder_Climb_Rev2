@@ -30,7 +30,7 @@ const UploadVideoWidget = ({route, setSelectedDot}) => {
                 }
             })
             setAllRoutes(()=>updatedRouteList)
-            if(setSelectedDot){setSelectedDot(updatedRoute)}
+            // if(setSelectedDot){setSelectedDot(updatedRoute)}
         })
     }
 
