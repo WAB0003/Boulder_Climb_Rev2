@@ -29,7 +29,7 @@ werkzeug = "2.2.2"
 flask-restful = "*"
 bcrypt = "*"
 flask-bcrypt = "*"
-
+python-dotenv = "*"
 
 [dev-packages]
 
