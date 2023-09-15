@@ -15,10 +15,10 @@ app.json.compact = False
 app.secret_key = 'My Secret Key'
 
 
-db = SQLAlchemy()
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-db.init_app(app)
+# db.init_app(app)
 
 bcrypt = Bcrypt(app)
 

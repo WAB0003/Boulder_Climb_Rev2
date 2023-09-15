@@ -44,8 +44,8 @@ function EmployeeGymLayout() {
       setter_id:user.id,
       rating: "No Rating",
       active:true,
-      xPosition:(x),
-      yPosition:(y)
+      xPosition:(x).toString(),
+      yPosition:(y).toString()
     }
 
     fetch("/routes", {

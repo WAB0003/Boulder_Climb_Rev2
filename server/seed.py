@@ -13,7 +13,7 @@ def delete_Tables():
     User.query.delete()
     print("Deleted all users...")
     Gym.query.delete()
-    print("Deleted all users...")
+    print("Deleted all Gyms...")
     Route.query.delete()
     print("Deleted all routes...")
     Like.query.delete()
@@ -21,36 +21,46 @@ def delete_Tables():
     Climb.query.delete()
     print("Delete climb table...")
     
+def make_gyms():
+    gym1 = Gym(name="Poplar", street="900 Poplar PI St", city="Seattle", state="WA", zipcode="98144", phone=555)
+    gym2 = Gym(name="Fremont",  street="3535 Interlake Ave N", city="Seattle", state="WA", zipcode="98103", phone=555)
+    # import ipdb; ipdb.set_trace()
+    db.session.add_all([gym1, gym2])
+
+    db.session.commit()
+    print("does it make it this far?")
+
+    print("Created 2 standard gyms...")
+    
 
 def make_users():
-    climberBill = User(first_name="Bill", last_name="Brown", username="climberBill", password_hash="password", current_gym_id=1)
-    employeeJack = User(first_name="Jack", last_name="Daniels", username="employeeJack", admin=True, password_hash="password", current_gym_id=1)
-    employeeJim = User(first_name="Jim", last_name="Beam", username="employeeJim", admin=True, password_hash="password", current_gym_id=2)
-    climberTom = User(first_name="Tom", last_name="Jones", username="climberTom", password_hash="password", current_gym_id=1)
+    allGyms = Gym.query.all()
+    # import ipdb; ipdb.set_trace()
+    climberBill = User(first_name="Bill", last_name="Brown", username="climberBill", password_hash="password", current_gym_id=allGyms[0].id)
+    employeeJack = User(first_name="Jack", last_name="Daniels", username="employeeJack", admin=True, password_hash="password", current_gym_id=allGyms[0].id)
+    employeeJim = User(first_name="Jim", last_name="Beam", username="employeeJim", admin=True, password_hash="password", current_gym_id=allGyms[1].id)
+    climberTom = User(first_name="Tom", last_name="Jones", username="climberTom", password_hash="password", current_gym_id=allGyms[1].id)
+    
     
     db.session.add_all([climberBill, employeeJack, employeeJim, climberTom])
     db.session.commit()
     print("Created 4 standard users...")
     
     
-def make_gyms():
-    gym1 = Gym(name="Poplar", street="900 Poplar PI St", city="Seattle", state="WA", zipcode="98144", phone=5555555555)
-    gym2 = Gym(name="Fremont",  street="3535 Interlake Ave N", city="Seattle", state="WA", zipcode="98103", phone=5555555555)
-    
-    db.session.add_all([gym1, gym2])
-    db.session.commit()
-    print("Created 2 standard gyms...")
+
 
 def make_routes():
-    route_list = []
+    employees = User.query.all()
+    gyms = Gym.query.all()
     
-    route1 = Route(name="Big Cheesey", xPosition=50.354166666666664, yPosition=36.166666666666664, rating=1, video_url="userVideos/RedRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
+    route_list = []
+    route1 = Route(name="Big Cheesey", xPosition="50.354166666666664", yPosition="36.166666666666664", rating=1, video_url="userVideos/RedRoute", setter_id=choice([employees[1].id,employees[2].id]), gym_id=choice([gyms[0].id,gyms[1].id]), active=True)
     route_list.append(route1)
     
-    route2 = Route(name="TableTop", xPosition=44.135908440629464, yPosition=35.49809160305343, rating=0, video_url="userVideos/YellowRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
+    route2 = Route(name="TableTop", xPosition="44.135908440629464", yPosition="35.49809160305343", rating=0, video_url="userVideos/YellowRoute", setter_id=choice([employees[1].id,employees[2].id]), gym_id=choice([gyms[0].id,gyms[1].id]), active=True)
     route_list.append(route2)
     
-    route3 = Route(name="Spanky", xPosition=27.25464949928469, yPosition=36.45229007633588, rating=3, video_url="userVideos/PurpleRoute", setter_id=choice([2,3]), gym_id=choice([1,2]), active=True)
+    route3 = Route(name="Spanky", xPosition="27.25464949928469", yPosition="36.45229007633588", rating=3, video_url="userVideos/PurpleRoute", setter_id=choice([employees[1].id,employees[2].id]), gym_id=choice([gyms[0].id,gyms[1].id]), active=True)
     route_list.append(route3)
     
     # route4 = Route(name="Gandalf", xPosition=40.30225483178239, yPosition=49.57275763358779, rating=randint(0,6), video_url="video url", setter_id=choice([2,3]), gym_id=choice([1,2]), active=choice([True, False]))
@@ -80,8 +90,11 @@ def make_routes():
     
     
 def make_likes():
-    like1 = Like(user_id=1, route_id=1)
-    like2 = Like(user_id=1, route_id=2)
+    climberBill = User.query.first()
+    routes = Route.query.all()
+    
+    like1 = Like(user_id=climberBill.id, route_id=routes[0].id)
+    like2 = Like(user_id=climberBill.id, route_id=routes[1].id)
  
     
     db.session.add_all([like1, like2])
@@ -108,8 +121,8 @@ def make_climbs():
 if __name__ == '__main__':
     with app.app_context():
         delete_Tables()
-        make_users()
         make_gyms()
+        make_users()
         make_routes()
         make_likes()
-        # make_climbs()
+        make_climbs()

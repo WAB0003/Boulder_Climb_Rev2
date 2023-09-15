@@ -8,6 +8,8 @@ from models import db, User, Gym, Like, Route, Climb
 
 CORS(app)
 
+app.config.from_object('config')
+
 #!USER MODEL ROUTES and AUTHENTICATION
 #*SIGNUP
 @app.route('/signup', methods=['POST'])
