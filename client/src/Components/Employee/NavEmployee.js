@@ -9,7 +9,7 @@ export default function NavEmployee() {
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        fetch('/logout', { method: 'DELETE'})
+        fetch('https://boulderclimb.onrender.com/logout', { method: 'DELETE'})
           .then(res => {
             if (res.ok) {
               updateUser(null)

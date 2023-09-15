@@ -48,7 +48,7 @@ function EmployeeGymLayout() {
       yPosition:(y).toString()
     }
 
-    fetch("/routes", {
+    fetch("https://boulderclimb.onrender.com/routes", {
       method: "POST",
       headers: {
         "Content-Type":"application/json",

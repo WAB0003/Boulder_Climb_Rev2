@@ -12,7 +12,7 @@ const UploadVideoWidget = ({route, setSelectedDot}) => {
             video_url: video_url 
           }
 
-        fetch (`/routes/${route.id}`, {
+        fetch (`https://boulderclimb.onrender.com/routes/${route.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type":"application/json",

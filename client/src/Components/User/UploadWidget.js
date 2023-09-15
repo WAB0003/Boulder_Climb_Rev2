@@ -14,7 +14,7 @@ const UploadWidget = ({climb}) => {
             user_video: video_url 
           }
 
-        fetch (`/climbs/${climb.id}`, {
+        fetch (`https://boulderclimb.onrender.com/climbs/${climb.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type":"application/json",

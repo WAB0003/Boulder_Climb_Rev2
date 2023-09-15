@@ -36,7 +36,7 @@ const RouteInfo = ({ route, setSelectedDot }) =>{
     const handleLikeButton = () => {
         //*DELETE EXISTING LIKE
         if (specificLike) {
-            fetch(`likes/${specificLike.id}`, {
+            fetch(`https://boulderclimb.onrender.com/likes/${specificLike.id}`, {
                 method: "DELETE", 
             })
             .then(()=>{
@@ -49,7 +49,7 @@ const RouteInfo = ({ route, setSelectedDot }) =>{
                 route_id: route.id,
                 user_id: user.id,
             }
-            fetch(`likes`, {
+            fetch(`https://boulderclimb.onrender.com/likes`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
@@ -67,7 +67,7 @@ const RouteInfo = ({ route, setSelectedDot }) =>{
     const handleCheckButton = () => {
         //*DELETE EXISTING Climb
         if (specificClimb) {
-            fetch(`climbs/${specificClimb.id}`, {
+            fetch(`https://boulderclimb.onrender.com/climbs/${specificClimb.id}`, {
                 method: "DELETE", 
             })
             .then(()=>{
@@ -80,7 +80,7 @@ const RouteInfo = ({ route, setSelectedDot }) =>{
                 route_id: route.id,
                 user_id: user.id,
             }
-            fetch(`climbs`, {
+            fetch(`https://boulderclimb.onrender.com/climbs`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",

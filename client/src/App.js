@@ -17,7 +17,7 @@ function App() {
 
   //Check if user exists in session already
   useEffect(() => {
-    fetch("/checksession")
+    fetch("https://boulderclimb.onrender.com/checksession")
     .then((r)=>{
       if (r.ok) {
         r.json().then((user) => updateUser(user));
@@ -27,21 +27,21 @@ function App() {
 
   //Get all routes upon initial render:
   useEffect(()=>{
-    fetch("/routes")
+    fetch("https://boulderclimb.onrender.com/routes")
     .then(r=>r.json())
     .then(routes=>setAllRoutes(routes))
   },[])
   
 
   useEffect(()=>{
-    fetch("/likes")
+    fetch("https://boulderclimb.onrender.com/likes")
     .then(r=>r.json())
     .then(likes=>setAllLikes(likes))
   },[])
 
   //Get all routes upon initial render:
   useEffect(()=>{
-    fetch("/climbs")
+    fetch("https://boulderclimb.onrender.com/climbs")
     .then(r=>r.json())
     .then(climbs=>setAllClimbs(climbs))
   },[])

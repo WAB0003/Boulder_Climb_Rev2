@@ -44,18 +44,18 @@ const LoginPage = () => {
 
         //submit from object to database depending on login or new user
         console.log(userObj)
-        fetch(signUp ? '/signup' : 'https://boulderclimb.onrender.com/login', {
+        fetch(signUp ? 'https://boulderclimb.onrender.com/signup' : 'https://boulderclimb.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(userObj)
         })
-        .then(r => console.log(r.json())
-        //     {
-        //     if (r.ok){r.json().then((user)=>{updateUser(user)})}
-        //     else {signUp ? setErrors("Invalid Username") : setErrors("Login does not exist. Please submit a valid Login")}
-        // }
+        .then(r => 
+            {
+            if (r.ok){r.json().then((user)=>{updateUser(user)})}
+            else {signUp ? setErrors("Invalid Username") : setErrors("Login does not exist. Please submit a valid Login")}
+        }
         )
     }
     

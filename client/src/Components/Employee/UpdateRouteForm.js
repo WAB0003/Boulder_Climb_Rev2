@@ -46,7 +46,7 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
           }
 
         //*Update Route
-        fetch (`/routes/${route.id}`, {
+        fetch (`https://boulderclimb.onrender.com/routes/${route.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type":"application/json",
@@ -69,7 +69,7 @@ const UpdateRouteForm = ({ route, setSelectedDot }) =>{
 
     //! Handle Delete
     const handleDeleteClick=()=>{
-        fetch(`/routes/${route.id}`,{
+        fetch(`https://boulderclimb.onrender.com/routes/${route.id}`,{
         method: "DELETE",
         })
         // .then(r=>r.json())
