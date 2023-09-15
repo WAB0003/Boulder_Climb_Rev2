@@ -43,7 +43,6 @@ const LoginPage = () => {
         }
 
         //submit from object to database depending on login or new user
-        console.log(userObj)
         fetch(signUp ? 'https://boulderclimb.onrender.com/signup' : 'https://boulderclimb.onrender.com/login', {
             method: 'POST',
             headers: {

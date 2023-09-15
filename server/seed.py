@@ -28,8 +28,6 @@ def make_gyms():
     db.session.add_all([gym1, gym2])
 
     db.session.commit()
-    print("does it make it this far?")
-
     print("Created 2 standard gyms...")
     
 
@@ -124,5 +122,5 @@ if __name__ == '__main__':
         make_gyms()
         make_users()
         make_routes()
-        make_likes()
-        make_climbs()
+        # make_likes()
+        # make_climbs()

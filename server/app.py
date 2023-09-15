@@ -166,7 +166,6 @@ def routes():
         return [route.to_dict() for route in Route.query.all()]
     elif request.method == "POST":
         frontEndData = request.get_json()
-        # import ipdb;ipdb.set_trace()
         try:
             new_route = Route(
                 name=frontEndData.get("name"),
@@ -178,6 +177,7 @@ def routes():
                 xPosition = frontEndData.get("xPosition"),
                 yPosition = frontEndData.get("yPosition")
             )
+            import ipdb;ipdb.set_trace()
             db.session.add(new_route)
             db.session.commit()
             return new_route.to_dict(), 201

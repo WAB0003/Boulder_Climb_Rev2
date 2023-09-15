@@ -35,8 +35,10 @@ function EmployeeGymLayout() {
     //When image is clicked, a dot will appear. Compute the height/width as a percentage relative to the image location
     setSelectedDot(false)
     const imageHeight = document.querySelector('#main_image').clientHeight
-    const x = ((e.pageX - ((windowWidth-imageWidth)/2))-(dotDiameter/2))/imageWidth*100;
+    const x = (((e.pageX - ((windowWidth-imageWidth)/2))-(dotDiameter/2))/imageWidth*100);
     const y = (e.pageY-(dotDiameter/2)-navbarHeight)/imageHeight*100;
+
+  
 
     // a new dot object is created in preparation to send to database to persist 
     const newDotObj = {
@@ -47,6 +49,8 @@ function EmployeeGymLayout() {
       xPosition:(x).toString(),
       yPosition:(y).toString()
     }
+
+    console.log(newDotObj)
 
     fetch("https://boulderclimb.onrender.com/routes", {
       method: "POST",
@@ -63,7 +67,7 @@ function EmployeeGymLayout() {
 
 
   const [selectedDot, setSelectedDot] = useRecoilState(recoilSelectedDot)
-  console.log(selectedDot)
+
     
   
 
