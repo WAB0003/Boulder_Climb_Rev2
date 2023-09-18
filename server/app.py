@@ -164,7 +164,7 @@ def gym_by_id(id):
 def routes():
     if request.method == "GET":
         return [route.to_dict() for route in Route.query.all()]
-    elif request.method == "POST":
+    elif request.method == "POST": 
         frontEndData = request.get_json()
         try:
             new_route = Route(
@@ -177,7 +177,7 @@ def routes():
                 xPosition = frontEndData.get("xPosition"),
                 yPosition = frontEndData.get("yPosition")
             )
-            import ipdb;ipdb.set_trace()
+            
             db.session.add(new_route)
             db.session.commit()
             return new_route.to_dict(), 201
