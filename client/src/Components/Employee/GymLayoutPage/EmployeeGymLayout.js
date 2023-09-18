@@ -44,7 +44,7 @@ function EmployeeGymLayout() {
     const newDotObj = {
       name:"Untitled Route", 
       setter_id:user.id,
-      rating: "No Rating",
+      rating: 0,
       active:true,
       xPosition:(x).toString(),
       yPosition:(y).toString()

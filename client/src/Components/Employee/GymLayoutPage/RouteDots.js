@@ -27,8 +27,6 @@ function RouteDots({ route, dotDiameter}) {
 
     const handleDotClick = () => {
         setSelectedDot(route)
-        // setSelectedDot(route)
-        console.log("test")
     }
 
  
