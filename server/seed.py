@@ -16,10 +16,10 @@ def delete_Tables():
     print("Deleted all Gyms...")
     Route.query.delete()
     print("Deleted all routes...")
-    Like.query.delete()
-    print("Delete existing likes table...")
     Climb.query.delete()
     print("Delete climb table...")
+    Like.query.delete()
+    print("Delete existing likes table...")
     
 def make_gyms():
     gym1 = Gym(name="Poplar", street="900 Poplar PI St", city="Seattle", state="WA", zipcode="98144", phone=555)
@@ -122,5 +122,5 @@ if __name__ == '__main__':
         make_gyms()
         make_users()
         make_routes()
-        # make_likes()
-        # make_climbs()
+        make_likes()
+        make_climbs()
