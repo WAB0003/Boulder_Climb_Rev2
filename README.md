@@ -4,6 +4,10 @@ As a climber that frequently visits indoor climbing gyms, I’ve always wanted a
 
 Click [HERE](https://www.youtube.com/watch?v=p1tCp2awO04) for a video demonstration!
 
+
+Click [HERE](https://boulder-climb-us.web.app/) to visit the deployed site!
+
+
 ## User Experience
 The Boulder Climb App has two distinct user types: _General User_ and an _Employee_. 
 
